@@ -27,7 +27,7 @@ def log_volume_fractions_endpoints(walks):
         ax.imshow(np.rot90(f), cmap='Blues', extent=[0, 400, 0, 80])
         plt.show()
         plt.pause(0.001)
-        input()
+        eval(input())
 
     return logpdfs
 
@@ -133,16 +133,16 @@ def perform_causal_entropic_forcing(num_sample_paths, steps, plot, environment):
     'reflex loop of model-based reflex agent'
     cur_macrostate = environment.start
     path = [cur_macrostate]
-    print cur_macrostate
+    print(cur_macrostate)
     for _ in range(steps):
         # move agent
         causal_entropic_force = calculate_causal_entropic_force(cur_macrostate, num_sample_paths, environment)
         cur_macrostate = environment.step_macrostate(cur_macrostate, causal_entropic_force)
         # keep track of motion
         if not environment.valid(path, cur_macrostate):
-            print "Error: Agent in invalid environment state,", cur_macrostate
+            print("Error: Agent in invalid environment state,", cur_macrostate)
             exit()
-        print cur_macrostate
+        print(cur_macrostate)
         path.append(cur_macrostate)
         # plot if true
         if plot == True:

@@ -56,7 +56,8 @@ class particleBox:
     
     def plot(self):
         'initialise an interactive plot'
-        plt.gca(aspect = 'equal')
+        ax = plt.gca()
+        ax.set(aspect = 'equal')
         plt.title("Particle in a 2 dimensional box")
         plt.xlim(self.bounds[0][0], self.bounds[0][1])
         plt.ylim(self.bounds[1][0], self.bounds[1][1])

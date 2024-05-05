@@ -183,7 +183,7 @@ def plot_3D(walks, environment, cur_macrostate, difference):
     ax.set_zlabel("Time / ms")
     for walk in walks:
         walk_plot = [[w[i] for w in walk] for i in range(environment.DIMS)]
-        ax.plot(walk_plot[0], walk_plot[1], 0.025 * array(range(len(walk_plot[0]))))
+        ax.plot(walk_plot[0], walk_plot[1], 0.025 * array(list(range(len(walk_plot[0])))))
     arrow_prop_dict = dict(linewidth=3.0, mutation_scale=1.0, arrowstyle='-|>', color='k', shrinkA=0, shrinkB=0)
     a = Arrow3D([cur_macrostate[0], cur_macrostate[0] + difference[0]], [cur_macrostate[1], cur_macrostate[1] + difference[1]], [0.0, 0.0], **arrow_prop_dict)
     ax.add_artist(a)
