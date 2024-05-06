@@ -15,9 +15,9 @@ def log_volume_fractions_endpoints(walks):
     'perform KDE on endpoints only'
     endpoints = array([walk[-1] for walk in walks])
     kernel = gaussian_kde(endpoints.T)
-    logpdfs = -array([kernel.pdf(endpoints.T)]).T
+    pdfs = -array([kernel.pdf(endpoints.T)]).T
 
-    if False:
+    if True:
         fig = plt.figure()
         ax = fig.add_subplot(111, aspect = 'equal')
         xx, yy = np.mgrid[0:400:200j, 0:80:200j]
@@ -27,9 +27,9 @@ def log_volume_fractions_endpoints(walks):
         ax.imshow(np.rot90(f), cmap='Blues', extent=[0, 400, 0, 80])
         plt.show()
         plt.pause(0.001)
-        eval(input())
+        #eval(input())
 
-    return logpdfs
+    return pdfs
 
     
 def log_volume_fractions2(walks):
@@ -40,7 +40,6 @@ def log_volume_fractions2(walks):
     points = array([walk[length:] for walk in walks]).reshape((-1,2))
     kernel = gaussian_kde(points.T)
     
-    """
     fig = plt.figure()
     ax = fig.add_subplot(111, aspect = 'equal')
     xx, yy = np.mgrid[0:400:200j, 0:80:200j]
@@ -50,8 +49,7 @@ def log_volume_fractions2(walks):
     ax.imshow(np.rot90(f), cmap='Blues', extent=[0, 400, 0, 80])
     plt.show()
     plt.pause(0.001)
-    input()
-    """
+    #input()
     
     logpdfs = -array([kernel.pdf(endpoints.T)]).T
     return logpdfs
